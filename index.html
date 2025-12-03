@@ -3,6 +3,63 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tap Heart Loader</title>
+<style>
+  :root{
+    --bg1:#ffd6e7;
+    --bg2:#e8d7ff;
+    --accent:#ff5da2;
+    --accent2:#a86bff;
+  }
+  body, html{
+    margin:0; padding:0; height:100%; font-family:sans-serif; overflow:hidden;
+  }
+  /* Loader full screen */
+  #loader{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background: linear-gradient(160deg,var(--bg1),var(--bg2));
+    z-index:9999;
+  }
+  /* Heart button */
+  .loader-heart{
+    width:60px; height:60px; position:relative; cursor:pointer; margin-bottom:20px;
+  }
+  .loader-heart::before,
+  .loader-heart::after{
+    content:""; position:absolute; width:30px; height:48px; border-radius:30px 30px 0 0;
+  }
+  .loader-heart::before{left:15px; transform:rotate(-45deg); background:linear-gradient(180deg,var(--accent),var(--accent2));}
+  .loader-heart::after{left:0; transform:rotate(45deg); background:linear-gradient(180deg,var(--accent2),var(--accent));}
+  /* Loading bar */
+  #loadingBarContainer{
+    width:80%; max-width:260px; height:18px; border-radius:12px; background:rgba(36,18,43,0.1); overflow:hidden;
+  }
+  #loadingBarFill{
+    height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width 0.2s ease;
+  }
+  /* Site hidden initially */
+  .site{
+    display:none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-heart" id="pumpHeart" title="Tap me!"></div>
+  <div id="loadingBarContainer"><div id="loadingBarFill"></div></div>
+  <p>Tap the heart to unlock your surprise!</p>
+</div>
+
+<!-- Your site content -->
+<div class="site">
+  <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Happy 20th Birthday, Shamiso 🎉</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 <style>
@@ -190,15 +247,6 @@
         <div id="yearDetail" style="margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.45))">
           <strong id="yearTitle">Click a year</strong>
           <p id="yearText" style="margin:6px 0 0;color:#5a3a5f">Small sweet memory will appear here.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-        <div style="font-weight:700">Photos</div>
-        <div class="grid" style="margin-top:10px">
-          <div class="photo">Add photo 1</div>
-          <div class="photo">Add photo 2</div>
-          <div class="photo">Add photo 3</div>
         </div>
       </div>
 
@@ -500,5 +548,32 @@ meterFill.style.width = loveScore + '%';
 
 /* ------------- END ------------- */
 </script>
+</body>
+</html>
+</div>
+
+<script>
+const heart = document.getElementById('pumpHeart');
+const barFill = document.getElementById('loadingBarFill');
+const loader = document.getElementById('loader');
+const site = document.querySelector('.site');
+
+let fill = 0;
+const maxFill = 100;
+
+heart.addEventListener('click', ()=>{
+  if(fill < maxFill){
+    fill += 10; // increase per tap
+    if(fill>maxFill) fill=maxFill;
+    barFill.style.width = fill + '%';
+    heart.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:300,iterations:1});
+  }
+  if(fill >= maxFill){
+    loader.style.display = 'none';
+    site.style.display = 'block';
+  }
+});
+</script>
+
 </body>
 </html>
