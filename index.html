@@ -6,171 +6,499 @@
 <title>Happy 20th Birthday, Shamiso 🎉</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg1:#ffd6e7;
-  --bg2:#e8d7ff;
-  --accent:#ff5da2;
-  --accent2:#a86bff;
-  --shadow:0 6px 30px rgba(16,16,40,0.25);
-}
-body,html{margin:0;padding:0;height:100%;font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto;overflow-x:hidden;}
-body{background:linear-gradient(160deg,var(--bg1),var(--bg2));color:#24122b;-webkit-font-smoothing:antialiased;}
+  :root{
+    --bg1:#ffd6e7;
+    --bg2:#e8d7ff;
+    --accent:#ff5da2;
+    --accent2:#a86bff;
+    --soft:#fff7fb;
+    --glass: rgba(255,255,255,0.10);
+    --glass-2: rgba(255,255,255,0.06);
+    --shadow: 0 6px 30px rgba(16,16,40,0.25);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Montserrat",system-ui,-apple-system,Segoe UI,Roboto;
+    background: linear-gradient(160deg,var(--bg1),var(--bg2));
+    overflow-x:hidden;
+    color:#24122b;
+    -webkit-font-smoothing:antialiased;
+  }
 
-/* Loader screen */
-#loader{
-  position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:linear-gradient(160deg,var(--bg1),var(--bg2));z-index:9999;padding:20px;text-align:center;
-}
-.loader-heart{
-  width:60px;height:60px;position:relative;margin:16px;cursor:pointer;
-}
-.loader-heart::before,.loader-heart::after{
-  content:"";position:absolute;width:30px;height:48px;border-radius:30px 30px 0 0;
-}
-.loader-heart::before{left:15px;transform:rotate(-45deg);background:linear-gradient(180deg,var(--accent),var(--accent2))}
-.loader-heart::after{left:0;transform:rotate(45deg);background:linear-gradient(180deg,var(--accent2),var(--accent))}
+  /* floating hearts (layer) */
+  .hearts {
+    position:fixed;inset:0;pointer-events:none;z-index:1;
+  }
+  .heart {
+    position:absolute;
+    width:28px;height:28px;
+    transform:translateY(0) rotate(0deg);
+    opacity:0.9;
+    animation:floatUp linear infinite;
+    filter:drop-shadow(0 8px 20px rgba(168,107,255,0.18));
+  }
+  .heart::before,.heart::after{
+    content:"";position:absolute;width:14px;height:22px;background:var(--accent);border-radius:14px 14px 0 0;
+    transform-origin:center top;
+  }
+  .heart::before{left:7px;border-radius:14px 14px 0 0;transform:rotate(-45deg);background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .heart::after{left:0;transform:rotate(45deg);background:linear-gradient(180deg,var(--accent2),var(--accent))}
+  @keyframes floatUp {
+    0%{transform:translateY(120vh) scale(.6) rotate(0); opacity:0}
+    10%{opacity:1}
+    100%{transform:translateY(-20vh) scale(1.2) rotate(360deg); opacity:0}
+  }
 
-/* Loading bar */
-#loadingBarContainer{
-  width:80%;max-width:260px;height:18px;border-radius:12px;background:rgba(36,18,43,0.1);overflow:hidden;margin-top:12px;
-}
-#loadingBarFill{
-  height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 0.2s ease;
-}
+  /* layout */
+  .container{position:relative;z-index:2;max-width:1100px;margin:40px auto;padding:28px}
+  header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+  .logo{
+    width:76px;height:76px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;color:white;font-family:"Playfair Display";
+    box-shadow:var(--shadow);
+  }
+  h1{font-family:"Playfair Display";font-size:36px;margin:0;line-height:1;color:#340b2c;text-shadow:0 2px 8px rgba(168,107,255,0.06)}
+  .subtitle{color:#5a3a5f;margin-top:6px;font-size:14px}
 
-/* container hidden initially */
-.container{display:none;position:relative;z-index:2;max-width:100%;margin:0 auto;padding:16px;}
+  /* hero card */
+  .hero{
+    background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.48));
+    border-radius:18px;padding:28px;box-shadow:var(--shadow);backdrop-filter: blur(6px);
+    display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:center;
+  }
+  .hero-left{padding-right:6px}
+  .typewriter{
+    font-size:20px;color:#45102f;min-height:66px;
+    font-weight:500;
+    margin:8px 0 18px;
+  }
+  .big-cta{display:inline-flex;gap:10px;align-items:center}
+  .btn{
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    color:white;border:none;padding:12px 18px;border-radius:12px;font-weight:600;cursor:pointer;
+    box-shadow:0 6px 18px rgba(168,107,255,0.18)
+  }
+  .ghost{background:transparent;border:2px solid rgba(36,18,43,0.06);color:#34122b}
 
-/* floating hearts */
-.hearts {position:fixed;inset:0;pointer-events:none;z-index:1;}
-.heart {position:absolute;width:28px;height:28px;transform:translateY(0) rotate(0deg);opacity:0.9;animation:floatUp linear infinite;filter:drop-shadow(0 8px 20px rgba(168,107,255,0.18));}
-.heart::before,.heart::after{content:"";position:absolute;width:14px;height:22px;border-radius:14px 14px 0 0;}
-.heart::before{left:7px;transform:rotate(-45deg);background:linear-gradient(180deg,var(--accent),var(--accent2))}
-.heart::after{left:0;transform:rotate(45deg);background:linear-gradient(180deg,var(--accent2),var(--accent))}
+  /* right column */
+  .hero-right{display:flex;flex-direction:column;gap:12px;align-items:center}
+  .gift{
+    width:220px;height:220px;border-radius:18px;background:linear-gradient(180deg,var(--glass),var(--glass-2));
+    display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;box-shadow:0 10px 30px rgba(36,18,43,0.08)
+  }
+  .gift .bow{
+    width:90px;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));
+    position:absolute;top:36px;left:50%;transform:translateX(-50%);box-shadow:0 6px 18px rgba(168,107,255,0.14)
+  }
+  .gift .icon{font-size:62px;color:white;text-shadow:0 6px 18px rgba(168,107,255,0.18)}
 
-@keyframes floatUp {
-  0%{transform:translateY(120vh) scale(.6) rotate(0); opacity:0}
-  10%{opacity:1}
-  100%{transform:translateY(-20vh) scale(1.2) rotate(360deg); opacity:0}
-}
+  /* popup */
+  .popup {
+    position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);
+    background:rgba(255,255,255,0.98);padding:20px;border-radius:16px;z-index:20;box-shadow:0 30px 80px rgba(38,20,40,0.45);
+    display:none;max-width:420px;text-align:center;
+  }
+  .popup.open{display:block;animation:pop .28s ease-out}
+  @keyframes pop{0%{transform:translate(-50%,-50%) scale(.86);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
 
-/* header */
-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-family:"Playfair Display";box-shadow:var(--shadow);}
-h1{font-family:"Playfair Display";font-size:24px;margin:0;line-height:1.2;color:#340b2c;text-shadow:0 2px 8px rgba(168,107,255,0.06);}
-.subtitle{color:#5a3a5f;margin-top:4px;font-size:12px;}
+  /* timeline */
+  .timeline{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+  .year{
+    background:rgba(36,18,43,0.04);padding:12px 16px;border-radius:12px;cursor:pointer;min-width:88px;
+    text-align:center;font-weight:600;color:#3a1d33;
+  }
+  .year.active{background:linear-gradient(90deg,var(--accent2),var(--accent));color:white;transform:translateY(-6px);box-shadow:0 8px 24px rgba(168,107,255,0.12)}
 
-/* hero content */
-main{display:flex;flex-direction:column;gap:16px;}
-.hero-left,.hero-right{display:flex;flex-direction:column;gap:12px;}
-.hero-left h2{font-size:18px;margin:0;}
-.typewriter{font-size:16px;color:#45102f;min-height:60px;font-weight:500;margin:8px 0;}
-.btn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;padding:10px 14px;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(168,107,255,0.18);}
-.ghost{background:transparent;border:2px solid rgba(36,18,43,0.06);color:#34122b;}
+  /* gallery & wishes */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .photo{
+    height:120px;border-radius:12px;background:linear-gradient(180deg,#fff,#f6e9f6);display:flex;align-items:center;justify-content:center;color:#965b86;font-weight:600
+  }
+  .wishes{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .card{
+    width:180px;height:120px;border-radius:12px;background:linear-gradient(180deg,white,#fff8fb);
+    box-shadow:0 8px 20px rgba(36,18,43,0.06);position:relative;perspective:900px;cursor:pointer;
+  }
+  .card-inner{position:absolute;inset:0;border-radius:12px;transition:transform .5s;transform-style:preserve-3d}
+  .card.flipped .card-inner{transform:rotateY(180deg)}
+  .card-face{position:absolute;inset:0;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;padding:12px;font-weight:600}
+  .card-back{transform:rotateY(180deg);background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border-radius:12px}
 
-/* gift */
-.gift{width:180px;height:180px;border-radius:16px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;box-shadow:0 10px 30px rgba(36,18,43,0.08);}
-.gift .bow{width:70px;height:14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));position:absolute;top:28px;left:50%;transform:translateX(-50%);box-shadow:0 6px 18px rgba(168,107,255,0.14);}
-.gift .icon{font-size:48px;color:white;text-shadow:0 6px 18px rgba(168,107,255,0.18);}
+  /* love meter */
+  .meter{background:rgba(36,18,43,0.06);border-radius:999px;height:14px;overflow:hidden;margin-top:12px}
+  .meter .fill{height:100%;width:4%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .45s ease}
 
-/* timeline and wishes */
-.timeline{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
-.year{background:rgba(36,18,43,0.04);padding:8px 12px;border-radius:10px;text-align:center;font-weight:600;color:#3a1d33;cursor:pointer;}
-.year.active{background:linear-gradient(90deg,var(--accent2),var(--accent));color:white;transform:translateY(-4px);box-shadow:0 6px 18px rgba(168,107,255,0.12);}
-.wishes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
-.card{height:100px;border-radius:12px;background:linear-gradient(180deg,white,#fff8fb);box-shadow:0 6px 20px rgba(36,18,43,0.06);position:relative;perspective:900px;cursor:pointer;}
-.card-inner{position:absolute;inset:0;border-radius:12px;transition:transform .5s;transform-style:preserve-3d;}
-.card.flipped .card-inner{transform:rotateY(180deg);}
-.card-face{position:absolute;inset:0;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;padding:8px;font-weight:600;}
-.card-back{transform:rotateY(180deg);background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border-radius:12px;}
+  /* footer */
+  footer{margin-top:28px;text-align:center;color:#4a2d48;font-size:13px;opacity:.9;padding-bottom:40px}
 
-/* meter */
-.meter{background:rgba(36,18,43,0.06);border-radius:999px;height:12px;overflow:hidden;margin-top:8px;}
-.meter .fill{height:100%;width:4%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .45s ease;}
+  /* responsive */
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr;gap:18px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){
+    .grid{grid-template-columns:1fr}
+    .logo{width:56px;height:56px}
+    h1{font-size:28px}
+    .photo{height:110px}
+    .hero-right{align-items:stretch}
+  }
 
-/* footer */
-footer{text-align:center;color:#4a2d48;font-size:12px;opacity:.9;margin-top:16px;margin-bottom:24px;}
-
-/* responsive adjustments */
-@media(max-width:420px){
-  .wishes{grid-template-columns:1fr;}
-  .gift{width:160px;height:160px;}
-  .logo{width:48px;height:48px;}
-  h1{font-size:20px;}
-  .typewriter{font-size:14px;}
-}
+  /* small sparkle */
+  .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 12px rgba(255,255,255,0.9);opacity:.9}
 </style>
 </head>
 <body>
 
-<!-- Loader -->
-<div id="loader">
-  <div class="loader-heart" id="pumpHeart" title="Tap me!"></div>
-  <div id="loadingBarContainer"><div id="loadingBarFill"></div></div>
-  <div style="margin-top:12px;font-family:'Montserrat';color:#45102f;font-weight:500">Tap the heart to unlock your surprise!</div>
-</div>
-
-<!-- floating hearts -->
+<!-- floating hearts container (hearts generated by JS) -->
 <div class="hearts" aria-hidden="true"></div>
 
-<!-- main site -->
 <div class="container">
   <header>
     <div class="logo">S</div>
     <div>
       <h1>Happy 20th, Shamiso ✨</h1>
-      <div class="subtitle">A little page made with all my ❤️ — enjoy </div>
+      <div class="subtitle">A little page made with all my ❤️ — enjoy the surprises</div>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+      <button id="musicToggle" class="btn ghost" title="Toggle music">🎵 Music</button>
     </div>
   </header>
-  <main class="hero-left">
-    <h2 style="font-family:'Playfair Display'">Your surprise is ready!</h2>
-    <div class="gift" id="giftBox">
-      <div class="bow"></div>
-      <div class="icon">🎁</div>
-    </div>
-    <div style="margin-top:12px">
-      <div class="meter"><div class="fill" id="meterFill"></div></div>
-    </div>
+
+  <main class="hero" role="main" aria-labelledby="hero-heading">
+    <section class="hero-left">
+      <div id="hero-heading" style="display:flex;align-items:center;gap:12px">
+        <h2 style="margin:0;font-size:22px">For you, Shamiso</h2>
+      </div>
+
+      <div class="typewriter" id="typewriter" data-text="Hey Shamiso — today you turn 20. I made this just for you. Click the gift to open your surprise.">
+        <!-- typed text appears here -->
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn" id="openGiftBtn">Open Your Gift 🎁</button>
+        <button class="btn ghost" id="toggleTimeline">Show Timeline</button>
+      </div>
+
+      <div id="timelineArea" style="display:none;margin-top:16px">
+        <div style="font-weight:700;margin-bottom:8px">Memories timeline</div>
+        <div class="timeline" id="timeline">
+          <!-- JS will generate years 1..20 -->
+        </div>
+        <div id="yearDetail" style="margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.45))">
+          <strong id="yearTitle">Click a year</strong>
+          <p id="yearText" style="margin:6px 0 0;color:#5a3a5f">Small sweet memory will appear here.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <div style="font-weight:700">Photos</div>
+        <div class="grid" style="margin-top:10px">
+          <div class="photo">Add photo 1</div>
+          <div class="photo">Add photo 2</div>
+          <div class="photo">Add photo 3</div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-weight:700">Wishes</div>
+          <div style="opacity:.8;font-size:13px">Tap a card</div>
+        </div>
+        <div class="wishes" id="wishesArea">
+          <div class="card" data-msg="Wishing you joy every day!"><div class="card-inner"><div class="card-face">From A</div><div class="card-face card-back">Wishing you joy every day!</div></div></div>
+          <div class="card" data-msg="You deserve the world."><div class="card-inner"><div class="card-face">From B</div><div class="card-face card-back">You deserve the world.</div></div></div>
+          <div class="card" data-msg="Keep shining, queen!"><div class="card-inner"><div class="card-face">From C</div><div class="card-face card-back">Keep shining, queen!</div></div></div>
+        </div>
+      </div>
+
+    </section>
+
+    <aside class="hero-right" aria-hidden="false">
+      <div class="gift" id="giftBox" title="Click to open your gift">
+        <div class="bow" aria-hidden="true"></div>
+        <div class="icon">🎁</div>
+      </div>
+
+      <div style="width:100%;text-align:center">
+        <div style="font-weight:700;margin-top:12px">Love Meter</div>
+        <div style="font-size:12px;margin-top:6px;opacity:.85">Click the heart to increase</div>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+          <button id="heartBtn" class="btn ghost" style="padding:8px 10px">💗</button>
+          <div style="flex:1">
+            <div class="meter"><div class="fill" id="meterFill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%;text-align:center;margin-top:12px">
+        <div style="font-weight:700;margin-bottom:6px">Hidden Message</div>
+        <div id="secret" style="padding:10px;border-radius:10px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:white;display:none">
+          Happy 20th, Shamiso — I love you & I'm proud of the person you are. 💖
+        </div>
+      </div>
+
+      <div style="margin-top:12px;width:100%">
+        <div style="font-weight:700">Playlist (optional)</div>
+        <div style="font-size:13px;opacity:.85;margin-top:6px">Click play on the music button above to toggle</div>
+
+        <!-- Optional YouTube embed - replace VIDEO_ID with the actual YouTube ID if you want an iframe (autoplay restricted on some browsers) -->
+        <div style="margin-top:8px;font-size:13px;color:#5a3a5f">Tip: Replace the iframe src 'VIDEO_ID' with a YouTube video ID you choose.</div>
+        <div style="margin-top:8px">
+          <iframe id="ytframe" width="100%" height="150" src="https://www.youtube.com/embed/VIDEO_ID?rel=0&controls=1&loop=1&playlist=VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px"></iframe>
+        </div>
+      </div>
+    </aside>
   </main>
+
+  <!-- popup -->
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <h3 id="popupTitle" style="margin:0 0 8px;font-family:'Playfair Display'">A little surprise for you</h3>
+    <p style="margin:0 0 14px;color:#5a3a5f">Shamiso — click the gift or press Open Your Gift to reveal something special.</p>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn" id="openGiftFromPopup">Open Your Gift 🎁</button>
+      <button class="btn ghost" id="closePopup">Later</button>
+    </div>
+  </div>
+
   <footer>
-    <small>Made with ❤️ for Shamiso.</small>
+    <small>Made with ❤️. Replace the placeholder photos & messages with yours for the full effect.</small>
   </footer>
 </div>
 
+<!-- hidden audio element (replace with your file or leave) -->
+<audio id="bgAudio" loop preload="auto">
+  <!-- Replace src with a hosted mp3 if you want audio: <source src="your-music.mp3" type="audio/mpeg"> -->
+  <!-- If you want YouTube autoplay, use the embedded iframe and enable autoplay via browser/user gesture. -->
+</audio>
+
 <script>
-// Floating hearts
-const heartsContainer=document.querySelector('.hearts');
+/* -------------------------
+  small helpers & state
+------------------------- */
+const heartsContainer = document.querySelector('.hearts');
+const popup = document.getElementById('popup');
+const giftBox = document.getElementById('giftBox');
+const openGiftBtn = document.getElementById('openGiftBtn');
+const openGiftFromPopup = document.getElementById('openGiftFromPopup');
+const closePopup = document.getElementById('closePopup');
+const typeEl = document.getElementById('typewriter');
+const musicToggle = document.getElementById('musicToggle');
+const bgAudio = document.getElementById('bgAudio');
+const heartBtn = document.getElementById('heartBtn');
+const meterFill = document.getElementById('meterFill');
+const secret = document.getElementById('secret');
+const timelineArea = document.getElementById('timelineArea');
+const toggleTimeline = document.getElementById('toggleTimeline');
+const timeline = document.getElementById('timeline');
+const yearTitle = document.getElementById('yearTitle');
+const yearText = document.getElementById('yearText');
+const wishesArea = document.getElementById('wishesArea');
+
+let loveScore = 4; // starts small
+const maxLove = 100;
+
+/* -------------------------
+  generate floating hearts
+------------------------- */
 function makeHeart(){
-  const h=document.createElement('div'); h.className='heart';
-  const size=Math.random()*26+18; h.style.width=size+'px'; h.style.height=size+'px';
-  h.style.left=(Math.random()*110-5)+'vw';
-  h.style.animationDuration=(8+Math.random()*10)+'s';
-  h.style.opacity=(0.5+Math.random()*0.6);
+  const h = document.createElement('div');
+  h.className = 'heart';
+  // randomize size/position/duration
+  const size = Math.random()*26 + 18;
+  h.style.width = size+'px';
+  h.style.height = size+'px';
+  h.style.left = (Math.random()*110 - 5) + 'vw';
+  h.style.animationDuration = (8 + Math.random()*10) + 's';
+  h.style.opacity = (0.5 + Math.random()*0.6);
   heartsContainer.appendChild(h);
-  setTimeout(()=>h.remove(),16000);
+  // remove after animation end (approx)
+  setTimeout(()=>h.remove(), 16000);
 }
-for(let i=0;i<10;i++){setTimeout(makeHeart,i*350)}
-setInterval(()=>{if(document.hidden) return; makeHeart()},800);
+// make 10 hearts initially + interval
+for(let i=0;i<10;i++){ setTimeout(makeHeart, i*350) }
+setInterval(()=>{ if(document.hidden) return; makeHeart(); }, 800);
 
-// Heart pump loader
-let fill=0; const maxFill=100;
-const heart=document.getElementById('pumpHeart');
-const barFill=document.getElementById('loadingBarFill');
-const loader=document.getElementById('loader');
-const container=document.querySelector('.container');
+/* -------------------------
+  popup auto show once (5s)
+------------------------- */
+let popupShown = false;
+function showPopupOnce(){
+  if(popupShown) return;
+  popupShown = true;
+  popup.classList.add('open');
+}
+setTimeout(showPopupOnce, 5000);
+closePopup.addEventListener('click', ()=>popup.classList.remove('open'));
 
-heart.addEventListener('click',()=>{
-  if(fill<maxFill){
-    fill+=10;
-    barFill.style.width=fill+'%';
-    heart.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:300,iterations:1});
+/* -------------------------
+  gift open behavior
+------------------------- */
+function openGift(){
+  // small "explosion" of hearts and reveal secret message
+  for(let i=0;i<24;i++){
+    setTimeout(()=>{ spawnSmallSpark(); }, i*30 + Math.random()*200);
   }
-  if(fill>=maxFill){
-    loader.style.display='none';
-    container.style.display='block';
+  secret.style.display = 'block';
+  // add a little wiggle animation
+  giftBox.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:450,iterations:1});
+  // show a confetti of hearts that fade
+  setTimeout(()=> popup.classList.remove('open'),100);
+}
+openGiftBtn.addEventListener('click', openGift);
+openGiftFromPopup.addEventListener('click', openGift);
+giftBox.addEventListener('click', openGift);
+
+/* -------------------------
+  typewriter (uses data-text)
+------------------------- */
+function typeWriter(el, speed=24){
+  const txt = el.dataset.text || el.textContent || '';
+  el.textContent = '';
+  let i=0;
+  const step = ()=>{
+    if(i<=txt.length){
+      el.textContent = txt.slice(0,i);
+      i++;
+      setTimeout(step, speed + Math.random()*18);
+    }
+  };
+  step();
+}
+typeWriter(typeEl, 24);
+
+/* -------------------------
+  music toggle (user can insert mp3 in audio tag) 
+  or rely on Youtube iframe (browser restrictions)
+------------------------- */
+let musicOn = false;
+musicToggle.addEventListener('click', ()=>{
+  // if audio source exists, toggle it; otherwise attempt to focus iframe (user may need to press play)
+  if(bgAudio.querySelector('source')){
+    if(!musicOn){ bgAudio.play().catch(()=>{}); musicToggle.classList.remove('ghost'); musicOn=true; musicToggle.textContent='🎵 Music (on)'; }
+    else{ bgAudio.pause(); musicOn=false; musicToggle.classList.add('ghost'); musicToggle.textContent='🎵 Music'; }
+  } else {
+    // fallback: try to focus iframe to encourage user to press play
+    musicToggle.textContent = '🎵 Open playlist below';
+    const f = document.getElementById('ytframe');
+    if(f){ f.scrollIntoView({behavior:'smooth', block:'center'}); }
+    setTimeout(()=>musicToggle.textContent = '🎵 Music', 1400);
   }
 });
-</script>
 
+/* -------------------------
+  heart button and love meter
+------------------------- */
+heartBtn.addEventListener('click', ()=>{
+  loveScore = Math.min(maxLove, loveScore + Math.floor(4 + Math.random()*10));
+  meterFill.style.width = (loveScore)+'%';
+  // tiny pop
+  heartBtn.animate([{transform:'scale(1)'},{transform:'scale(1.14)'},{transform:'scale(1)'}],{duration:350});
+  // unlock small secret at >=60
+  if(loveScore>=60) secret.style.display='block';
+});
+
+/* -------------------------
+  small spawn spark (for gift)
+------------------------- */
+function spawnSmallSpark(){
+  const s = document.createElement('div');
+  s.className='spark';
+  document.body.appendChild(s);
+  // position around center
+  const rect = giftBox.getBoundingClientRect();
+  s.style.left = (rect.left + rect.width*Math.random()) + 'px';
+  s.style.top = (rect.top + rect.height*Math.random()) + 'px';
+  const tx = (Math.random()-0.5)*200;
+  const ty = -120 - Math.random()*120;
+  s.animate([
+    {transform:'translate(0,0) scale(1)',opacity:1},
+    {transform:`translate(${tx}px, ${ty}px) scale(.2)`, opacity:0}
+  ],{duration:1000 + Math.random()*700, easing:'cubic-bezier(.2,.8,.2,1)'});
+  setTimeout(()=>s.remove(), 2200);
+}
+
+/* -------------------------
+  timeline generation & interactions
+------------------------- */
+function genTimeline(){
+  const currentAge = 20; // Shamiso is 20
+  for(let y=1;y<=currentAge;y++){
+    const btn = document.createElement('div');
+    btn.className='year';
+    btn.textContent = y;
+    btn.dataset.year = y;
+    // sample captions (you can edit these)
+    btn.dataset.caption = sampleCaptionForYear(y);
+    btn.addEventListener('click', ()=>{
+      // highlight
+      document.querySelectorAll('.timeline .year').forEach(n=>n.classList.remove('active'));
+      btn.classList.add('active');
+      yearTitle.textContent = `Age ${y}`;
+      yearText.textContent = btn.dataset.caption;
+    });
+    timeline.appendChild(btn);
+  }
+}
+function sampleCaptionForYear(y){
+  // give a friendly sample caption; replace as needed
+  const samples = [
+    "First small steps into the world.",
+    "Curious and full of smiles.",
+    "Learning and adventurous.",
+    "Tiny achievements that mattered.",
+    "New friendships and big dreams.",
+    "A quieter year of learning.",
+    "A spark of confidence appears.",
+    "Loves music and laughter more.",
+    "Growing, studying, exploring.",
+    "Teen years — bright energy.",
+    "Finding a style, a voice.",
+    "Bold choices and new friends.",
+    "Excited about the future.",
+    "Memories made with friends.",
+    "Small wins, big heart.",
+    "A year of glow-up and pride.",
+    "Strength and kindness shining.",
+    "Almost adult, full of hope.",
+    "A beautiful year of growth.",
+    "Today — you, radiant and loved."
+  ];
+  return samples[y-1] || "A special year.";
+}
+genTimeline();
+toggleTimeline.addEventListener('click', ()=>{
+  timelineArea.style.display = timelineArea.style.display === 'none' ? 'block' : 'none';
+});
+
+/* -------------------------
+  wishes flip-cards
+------------------------- */
+wishesArea.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    c.classList.toggle('flipped');
+  });
+});
+
+/* -------------------------
+  keyboard accessibility for open gift (Enter)
+------------------------- */
+giftBox.setAttribute('tabindex','0');
+giftBox.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openGift(); } });
+
+/* -------------------------
+  accessibility: close popup on Esc
+------------------------- */
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ popup.classList.remove('open'); } });
+
+/* -------------------------
+  adjust initial meter
+------------------------- */
+meterFill.style.width = loveScore + '%';
+
+/* ------------- END ------------- */
+</script>
 </body>
 </html>
