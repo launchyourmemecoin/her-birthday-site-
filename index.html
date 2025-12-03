@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Happy Birthday! 🎂</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         :root {
@@ -27,6 +28,7 @@
             min-height: 100vh;
             color: var(--text-color);
             overflow-x: hidden;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
         
         /* ===== PASSWORD PAGE ===== */
@@ -42,30 +44,31 @@
         
         .password-container {
             background: var(--card-bg);
-            padding: 50px 40px;
+            padding: 40px 30px;
             border-radius: 25px;
             box-shadow: 0 20px 40px rgba(255, 107, 139, 0.2);
             text-align: center;
             max-width: 450px;
-            width: 100%;
+            width: 90%;
             border: 3px solid var(--primary-pink);
+            margin-top: env(safe-area-inset-top);
         }
         
         .password-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.2em;
+            font-size: 2.8em;
             color: var(--dark-pink);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 700;
         }
         
         .password-input {
             width: 100%;
-            padding: 18px 25px;
-            font-size: 1.2em;
+            padding: 16px 20px;
+            font-size: 1.1em;
             border: 3px solid var(--secondary-pink);
             border-radius: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s;
             background: white;
@@ -78,18 +81,19 @@
         }
         
         .password-hint {
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #666;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-style: italic;
+            line-height: 1.4;
         }
         
         .enter-btn {
             background: linear-gradient(to right, var(--primary-pink), var(--dark-pink));
             color: white;
             border: none;
-            padding: 18px 45px;
-            font-size: 1.3em;
+            padding: 16px 40px;
+            font-size: 1.2em;
             font-weight: 600;
             border-radius: 15px;
             cursor: pointer;
@@ -97,6 +101,7 @@
             font-family: 'Poppins', sans-serif;
             letter-spacing: 1px;
             box-shadow: 0 8px 20px rgba(232, 67, 105, 0.3);
+            width: 100%;
         }
         
         .enter-btn:hover {
@@ -110,12 +115,13 @@
         
         .tiktok-tag {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 30px;
+            right: 20px;
             font-family: 'Poppins', sans-serif;
-            font-size: 1em;
+            font-size: 0.9em;
             color: var(--dark-pink);
             font-weight: 500;
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
         .tiktok-tag span {
@@ -137,43 +143,49 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            padding-top: max(20px, env(safe-area-inset-top));
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
         }
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            width: 100%;
         }
         
         .page-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5em;
+            font-size: 2.8em;
             color: var(--dark-pink);
             margin-bottom: 10px;
             font-weight: 700;
         }
         
         .page-subtitle {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #666;
             max-width: 600px;
             line-height: 1.6;
+            margin: 0 auto;
         }
         
-        /* Cake Container */
+        /* Cake Container - MOVED TO MIDDLE OF SCREEN */
         .cake-container {
             position: relative;
-            margin: 50px 0;
-            height: 350px;
+            margin: 30px 0;
+            height: 320px;
             width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* CHANGED: Center vertically */
         }
         
         .cake {
             position: absolute;
-            bottom: 0;
-            width: 280px;
-            height: 120px;
+            bottom: 50px; /* CHANGED: Positioned higher */
+            width: 250px;
+            height: 100px;
             background: linear-gradient(to top, #ffafbd, #ffc3a0);
             border-radius: 15px 15px 0 0;
             box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1);
@@ -181,9 +193,9 @@
         
         .cake-top {
             position: absolute;
-            top: -40px;
-            width: 320px;
-            height: 50px;
+            bottom: 130px; /* CHANGED: Positioned relative to cake */
+            width: 280px;
+            height: 40px;
             background: linear-gradient(to bottom, #ffcc99, #ffb780);
             border-radius: 50%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -191,14 +203,14 @@
         
         .candles {
             position: absolute;
-            top: -200px;
+            bottom: 180px; /* CHANGED: Positioned above cake */
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         
         .candle {
-            width: 15px;
-            height: 90px;
+            width: 12px;
+            height: 80px;
             background: linear-gradient(to bottom, #ff6b8b, #ff9eb5);
             border-radius: 8px;
             position: relative;
@@ -206,15 +218,15 @@
         }
         
         .flame {
-            width: 25px;
-            height: 50px;
+            width: 20px;
+            height: 40px;
             background: linear-gradient(to top, #ff9500, #ff3300);
             border-radius: 50% 50% 25% 25%;
             position: absolute;
-            top: -55px;
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 25px #ff9500;
+            box-shadow: 0 0 20px #ff9500;
             animation: flicker 0.4s infinite alternate;
         }
         
@@ -229,12 +241,34 @@
             transition: all 0.5s ease;
         }
         
+        /* Age Message - BELOW CAKE */
+        .age-message {
+            text-align: center;
+            margin-top: 40px; /* CHANGED: More space above */
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .age-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2em;
+            color: var(--dark-pink);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .age-subtitle {
+            font-size: 1em;
+            color: #666;
+            font-style: italic;
+        }
+        
         /* Microphone Controls */
         .mic-controls {
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: 20px;
-            margin: 30px 0;
+            margin: 20px 0;
             text-align: center;
             border: 2px solid var(--secondary-pink);
             max-width: 500px;
@@ -245,14 +279,16 @@
             background: linear-gradient(to right, #4dabf7, #228be6);
             color: white;
             border: none;
-            padding: 16px 35px;
-            font-size: 1.1em;
+            padding: 15px 30px;
+            font-size: 1em;
             border-radius: 12px;
             cursor: pointer;
-            margin: 10px;
+            margin: 8px;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             transition: all 0.3s;
+            width: 100%;
+            max-width: 250px;
         }
         
         .mic-btn:hover {
@@ -261,29 +297,34 @@
         }
         
         .status-text {
-            font-size: 1.1em;
+            font-size: 1em;
             margin: 15px 0;
             color: #444;
             min-height: 24px;
+            line-height: 1.4;
         }
         
         .blow-instruction {
             background: #e9f5ff;
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
             margin-top: 15px;
             border-left: 4px solid #4dabf7;
-            font-size: 0.95em;
+            font-size: 0.9em;
+            line-height: 1.4;
         }
         
         .navigation {
-            margin-top: 40px;
+            margin-top: 30px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            width: 90%;
+            max-width: 500px;
+            justify-content: center;
         }
         
         .nav-btn {
-            padding: 15px 30px;
+            padding: 14px 25px;
             background: var(--secondary-pink);
             color: white;
             border: none;
@@ -292,6 +333,8 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             transition: all 0.3s;
+            flex: 1;
+            max-width: 200px;
         }
         
         .nav-btn:hover {
@@ -303,13 +346,18 @@
             display: none;
         }
         
+        .nav-btn.enabled {
+            background: linear-gradient(to right, #51cf66, #40c057);
+            animation: pulse 1.5s infinite;
+        }
+        
         /* ===== CARDS PAGE ===== */
         .cards-container {
             width: 100%;
             max-width: 800px;
-            height: 600px;
+            height: 500px;
             position: relative;
-            margin: 40px auto;
+            margin: 30px auto;
         }
         
         .card {
@@ -319,7 +367,7 @@
             background: var(--card-bg);
             border-radius: 25px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -350,28 +398,28 @@
         
         .card-number {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 20px;
             font-family: 'Dancing Script', cursive;
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: var(--primary-pink);
             font-weight: 700;
         }
         
         .card-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 3em;
+            font-size: 2.5em;
             color: var(--dark-pink);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 700;
         }
         
         .card-content {
-            font-size: 1.3em;
-            line-height: 1.8;
+            font-size: 1.1em;
+            line-height: 1.6;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             flex-grow: 1;
             display: flex;
             align-items: center;
@@ -380,27 +428,29 @@
         }
         
         .media-placeholder {
-            width: 300px;
-            height: 200px;
+            width: 250px;
+            height: 160px;
             background: linear-gradient(135deg, var(--light-pink), var(--secondary-pink));
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 20px auto;
+            margin: 15px auto;
             color: var(--dark-pink);
-            font-size: 1.1em;
+            font-size: 1em;
             border: 2px dashed var(--primary-pink);
         }
         
         .card-controls {
             display: flex;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
         }
         
         .card-btn {
-            padding: 12px 30px;
+            padding: 12px 25px;
             background: var(--primary-pink);
             color: white;
             border: none;
@@ -408,17 +458,19 @@
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
+            flex: 1;
+            max-width: 150px;
         }
         
         .progress-dots {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px;
+            margin-top: 20px;
         }
         
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--secondary-pink);
             cursor: pointer;
@@ -433,13 +485,13 @@
         /* ===== FINAL MESSAGE ===== */
         .final-message {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5em;
+            font-size: 2.8em;
             color: var(--dark-pink);
             text-align: center;
             max-width: 800px;
             line-height: 1.4;
-            margin: 50px auto;
-            padding: 40px;
+            margin: 40px auto;
+            padding: 30px;
             background: var(--card-bg);
             border-radius: 25px;
             border: 3px solid var(--primary-pink);
@@ -456,57 +508,120 @@
             z-index: 1000;
         }
         
+        /* ===== iPhone X SPECIFIC ===== */
+        @supports(padding: max(0px)) {
+            .page, .password-container {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+            }
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .password-container {
-                padding: 40px 25px;
+                padding: 35px 25px;
             }
             
             .password-title {
-                font-size: 2.5em;
+                font-size: 2.3em;
             }
             
             .page-title {
-                font-size: 2.8em;
+                font-size: 2.3em;
             }
             
             .cake-container {
-                height: 300px;
+                height: 280px;
             }
             
             .cake {
-                width: 240px;
+                width: 220px;
+                height: 90px;
+                bottom: 40px;
             }
             
             .cake-top {
-                width: 270px;
+                width: 240px;
+                height: 35px;
+                bottom: 110px;
             }
             
             .candles {
-                gap: 15px;
+                bottom: 150px;
+                gap: 10px;
             }
             
             .candle {
-                width: 12px;
-                height: 70px;
+                width: 10px;
+                height: 65px;
+            }
+            
+            .flame {
+                width: 16px;
+                height: 35px;
+                top: -40px;
+            }
+            
+            .age-title {
+                font-size: 1.8em;
             }
             
             .cards-container {
-                height: 500px;
-                padding: 20px;
+                height: 450px;
+                padding: 15px;
             }
             
             .card {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             
             .card-title {
-                font-size: 2.5em;
+                font-size: 2em;
+            }
+            
+            .card-content {
+                font-size: 1em;
+            }
+            
+            .media-placeholder {
+                width: 200px;
+                height: 130px;
+                font-size: 0.9em;
             }
             
             .final-message {
-                font-size: 2.5em;
-                padding: 30px;
+                font-size: 2.2em;
+                padding: 25px;
+                margin: 30px 20px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .cake-container {
+                height: 250px;
+            }
+            
+            .cake {
+                bottom: 30px;
+            }
+            
+            .cake-top {
+                bottom: 100px;
+            }
+            
+            .candles {
+                bottom: 130px;
+            }
+            
+            .candle {
+                height: 60px;
             }
         }
         
@@ -514,7 +629,7 @@
         .error-message {
             color: #ff4757;
             margin-top: 10px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             display: none;
         }
     </style>
@@ -539,16 +654,25 @@
         <!-- PAGE 1: CAKE BLOWING -->
         <div class="page" id="cakePage">
             <div class="header">
-                <h1 class="page-title">YOU'RE 20? 🎂</h1>
-                <p class="page-subtitle">ISSOKAY NO ONE HAS TO KNOW BABYGIRL</p>
+                <h1 class="page-title">Happy Birthday! 🎂</h1>
+                <p class="page-subtitle">Blow out your candles and make a wish!</p>
             </div>
             
             <div class="cake-container">
-                <div class="cake"></div>
-                <div class="cake-top"></div>
+                <!-- Candles in the middle -->
                 <div class="candles" id="candlesContainer">
                     <!-- Candles generated by JS -->
                 </div>
+                
+                <!-- Cake below candles -->
+                <div class="cake"></div>
+                <div class="cake-top"></div>
+            </div>
+            
+            <!-- Age Message BELOW the cake -->
+            <div class="age-message">
+                <h2 class="age-title">YOU'RE 20? 🎂</h2>
+                <p class="age-subtitle">ISSOKAY NO ONE HAS TO KNOW BABYGIRL</p>
             </div>
             
             <div class="mic-controls">
@@ -721,6 +845,8 @@
                 document.getElementById('passwordPage').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
                 createFireworks(20); // Celebration fireworks
+                // Scroll to top for iPhone X
+                window.scrollTo(0, 0);
             } else {
                 error.style.display = 'block';
                 document.getElementById('passwordInput').style.borderColor = '#ff4757';
@@ -840,6 +966,10 @@
                 if (normalizedVolume > CONFIG.blowThreshold && candlesLit > 0) {
                     blowCandle();
                     document.getElementById('statusText').textContent = "BLOW DETECTED! 💨";
+                    document.getElementById('statusText').style.color = "#ff4757";
+                    setTimeout(() => {
+                        document.getElementById('statusText').style.color = "";
+                    }, 500);
                 }
                 
                 requestAnimationFrame(analyze);
@@ -865,11 +995,13 @@
             if (candlesLit === 0) {
                 setTimeout(() => {
                     document.getElementById('statusText').textContent = "🎉 ALL CANDLES BLOWN! Make a wish!";
-                    createFireworks(50);
+                    document.getElementById('statusText').style.color = "#51cf66";
+                    createFireworks(50); // Fireworks when all candles blown
                     isListening = false;
                     
                     // Enable next button
-                    document.getElementById('nextBtn').style.background = 'linear-gradient(to right, #51cf66, #40c057)';
+                    const nextBtn = document.getElementById('nextBtn');
+                    nextBtn.classList.add('enabled');
                 }, 800);
             }
         }
@@ -902,8 +1034,10 @@
             if (candlesLit === 0) {
                 document.getElementById('cakePage').style.display = 'none';
                 document.getElementById('cardsPage').style.display = 'flex';
-                createFireworks(20);
+                createFireworks(20); // Fireworks when going to cards
                 document.getElementById('prevBtn').classList.remove('hidden');
+                // Scroll to top for iPhone X
+                window.scrollTo(0, 0);
             } else {
                 alert("Please blow out all the candles first! 💨");
             }
@@ -912,12 +1046,14 @@
         function showCakePage() {
             document.getElementById('cardsPage').style.display = 'none';
             document.getElementById('cakePage').style.display = 'flex';
+            window.scrollTo(0, 0);
         }
 
         function showFinalMessage() {
             document.getElementById('cardsPage').style.display = 'none';
             document.getElementById('finalPage').style.display = 'flex';
-            createFireworks(100);
+            createFireworks(100); // Big fireworks for final message
+            window.scrollTo(0, 0);
         }
 
         // ===== CARDS FUNCTIONALITY =====
@@ -1000,12 +1136,12 @@
         
         document.querySelector('.cards-container').addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
-        });
+        }, { passive: true });
         
         document.querySelector('.cards-container').addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-        });
+        }, { passive: true });
         
         function handleSwipe() {
             const swipeThreshold = 50;
@@ -1022,12 +1158,14 @@
             }
         }
 
-        // Instructions
+        // iPhone X safe area handling
+        function isiPhoneX() {
+            return /iPhone X|iPhone 11|iPhone 12|iPhone 13|iPhone 14/.test(navigator.userAgent) && /iPhone/.test(navigator.userAgent);
+        }
+
         console.log("🎉 Birthday Website Ready!");
-        console.log("To customize:");
-        console.log("1. Edit messages in the HTML cards");
-        console.log("2. Replace media placeholders with actual images/videos");
-        console.log("3. Adjust CONFIG.blowThreshold for microphone sensitivity");
+        console.log("Cake and candles moved to middle of screen");
+        console.log("Fireworks added back!");
     </script>
 </body>
 </html>
