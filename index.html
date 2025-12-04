@@ -352,10 +352,11 @@
         }
         
         /* ===== CARDS PAGE ===== */
+        /* FIXED: Taller cards for iPhone X */
         .cards-container {
             width: 100%;
             max-width: 800px;
-            height: 500px;
+            height: 600px; /* INCREASED: Was 500px */
             position: relative;
             margin: 30px auto;
         }
@@ -367,15 +368,16 @@
             background: var(--card-bg);
             border-radius: 25px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            padding: 40px 30px 30px 30px; /* INCREASED TOP PADDING: Was 30px all */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* CHANGED: Start from top */
             border: 3px solid var(--secondary-pink);
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
             transform: translateX(100%) scale(0.8);
+            overflow: hidden; /* Prevent overflow */
         }
         
         .card.active {
@@ -398,12 +400,17 @@
         
         .card-number {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 20px; /* MOVED DOWN: Was 15px */
+            right: 25px; /* MOVED OUT: Was 20px */
             font-family: 'Dancing Script', cursive;
             font-size: 1.6em;
             color: var(--primary-pink);
             font-weight: 700;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 2px solid var(--primary-pink);
+            z-index: 20; /* Ensure it's above everything */
         }
         
         .card-title {
@@ -411,33 +418,39 @@
             font-size: 2.5em;
             color: var(--dark-pink);
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* REDUCED: Was 20px */
             font-weight: 700;
+            margin-top: 10px; /* Added top margin */
         }
         
         .card-content {
             font-size: 1.1em;
-            line-height: 1.6;
+            line-height: 1.7; /* INCREASED: Was 1.6 */
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* REDUCED: Was 30px */
             flex-grow: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             width: 100%;
+            padding: 0 10px;
+            overflow-y: auto; /* Allow scrolling if needed */
+            max-height: 200px; /* Limit text height */
         }
         
         /* ===== CUTE FLOWER FRAMES ===== */
         .photo-frame {
             width: 300px; /* BIGGER FRAME */
             height: 220px; /* BIGGER FRAME */
-            margin: 20px auto;
+            margin: 15px auto; /* REDUCED: Was 20px */
             position: relative;
             padding: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 20px;
+            flex-shrink: 0; /* Don't shrink */
         }
         
         /* Card 1 Frame - Pink Roses */
@@ -590,9 +603,10 @@
         .card-controls {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 15px; /* REDUCED: Was 20px */
             width: 100%;
             justify-content: center;
+            flex-shrink: 0; /* Don't shrink */
         }
         
         .card-btn {
@@ -611,7 +625,8 @@
         .progress-dots {
             display: flex;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 15px; /* REDUCED: Was 20px */
+            flex-shrink: 0; /* Don't shrink */
         }
         
         .dot {
@@ -813,26 +828,40 @@
                 font-size: 1.8em;
             }
             
+            /* FIXED: Taller cards for mobile */
             .cards-container {
-                height: 450px;
-                padding: 15px;
+                height: 550px; /* INCREASED: Was 450px */
+                padding: 10px;
             }
             
             .card {
-                padding: 25px 15px;
+                padding: 35px 15px 20px 15px; /* MORE TOP PADDING */
+            }
+            
+            .card-number {
+                top: 15px;
+                right: 15px;
+                font-size: 1.4em;
+                padding: 4px 10px;
             }
             
             .card-title {
                 font-size: 2em;
+                margin-bottom: 10px;
+                margin-top: 5px;
             }
             
             .card-content {
                 font-size: 1em;
+                line-height: 1.6;
+                max-height: 180px;
+                padding: 0 5px;
             }
             
             .photo-frame {
                 width: 250px;
                 height: 180px;
+                margin: 10px auto;
             }
             
             .timer-container {
@@ -882,6 +911,11 @@
             
             .candle {
                 height: 60px;
+            }
+            
+            /* Even taller cards for shorter screens */
+            .cards-container {
+                height: 500px;
             }
         }
         
@@ -1533,9 +1567,9 @@ Your love has been a light in my darkest moments, your laugh a reminder of joy, 
         }
 
         console.log("🎉 Birthday Website Ready!");
-        console.log("Added: Bigger picture frames with cute flower borders");
-        console.log("Each card has unique flower frame colors and decorations!");
-        console.log("Note: Replace image URLs with your actual photos");
+        console.log("FIXED: Cards are now taller (600px desktop, 550px mobile)");
+        console.log("FIXED: '1/5' numbers won't overlap with text");
+        console.log("FIXED: Text fits properly on iPhone X");
     </script>
 </body>
 </html>
