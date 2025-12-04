@@ -427,20 +427,165 @@
             width: 100%;
         }
         
-        .media-placeholder {
-            width: 250px;
-            height: 160px;
-            background: linear-gradient(135deg, var(--light-pink), var(--secondary-pink));
-            border-radius: 15px;
+        /* ===== CUTE FLOWER FRAMES ===== */
+        .photo-frame {
+            width: 300px; /* BIGGER FRAME */
+            height: 220px; /* BIGGER FRAME */
+            margin: 20px auto;
+            position: relative;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px auto;
-            color: var(--dark-pink);
-            font-size: 1em;
-            border: 2px dashed var(--primary-pink);
-            overflow: hidden;
+            border-radius: 20px;
         }
+        
+        /* Card 1 Frame - Pink Roses */
+        .frame-1 {
+            background: linear-gradient(135deg, #ffcce6, #ff99cc);
+            border: 8px solid #ff66b2;
+            box-shadow: 0 15px 30px rgba(255, 102, 178, 0.3);
+        }
+        
+        .frame-1::before {
+            content: "🌹🌹";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-1::after {
+            content: "🌹🌹";
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        /* Card 2 Frame - Blue Flowers */
+        .frame-2 {
+            background: linear-gradient(135deg, #cce7ff, #99ccff);
+            border: 8px solid #66b2ff;
+            box-shadow: 0 15px 30px rgba(102, 178, 255, 0.3);
+        }
+        
+        .frame-2::before {
+            content: "💙💙";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-2::after {
+            content: "💙💙";
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        /* Card 3 Frame - Purple Lavender */
+        .frame-3 {
+            background: linear-gradient(135deg, #e6ccff, #cc99ff);
+            border: 8px solid #9966cc;
+            box-shadow: 0 15px 30px rgba(153, 102, 204, 0.3);
+        }
+        
+        .frame-3::before {
+            content: "💜💜";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-3::after {
+            content: "💜💜";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        /* Card 4 Frame - Sunflowers */
+        .frame-4 {
+            background: linear-gradient(135deg, #fff9cc, #fff099);
+            border: 8px solid #ffcc00;
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
+        }
+        
+        .frame-4::before {
+            content: "🌻🌻";
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-4::after {
+            content: "🌻🌻";
+            position: absolute;
+            bottom: -20px;
+            right: -15px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        /* Card 5 Frame - Red Hearts */
+        .frame-5 {
+            background: linear-gradient(135deg, #ffcccc, #ff9999);
+            border: 8px solid #ff6666;
+            box-shadow: 0 15px 30px rgba(255, 102, 102, 0.3);
+        }
+        
+        .frame-5::before {
+            content: "❤️❤️";
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-5::after {
+            content: "❤️❤️";
+            position: absolute;
+            bottom: -15px;
+            left: -10px;
+            font-size: 2em;
+            z-index: 2;
+        }
+        
+        .frame-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 4px solid white;
+        }
+        
+        /* Add corner decorations */
+        .corner-decoration {
+            position: absolute;
+            font-size: 1.5em;
+        }
+        
+        .corner-tl { top: -25px; left: -25px; }
+        .corner-tr { top: -25px; right: -25px; }
+        .corner-bl { bottom: -25px; left: -25px; }
+        .corner-br { bottom: -25px; right: -25px; }
         
         .card-controls {
             display: flex;
@@ -685,10 +830,9 @@
                 font-size: 1em;
             }
             
-            .media-placeholder {
-                width: 200px;
-                height: 130px;
-                font-size: 0.9em;
+            .photo-frame {
+                width: 250px;
+                height: 180px;
             }
             
             .timer-container {
@@ -820,11 +964,11 @@
                     <div class="card-content">
                         <div>
                             <p>i never imagined id meet someone who could bring so much light into my world from the moment you became mine everything changed i smile more,i dream bigger and i love deeper you taught me what it truly means to feel seen and valued</p>
-                            <div class="media-placeholder">
+                            <div class="photo-frame frame-1">
                                 <!-- REPLACE THIS URL WITH YOUR PHOTO -->
-                                <img src="photo1.jpg"
-                                     style="width:100%; height:100%; object-fit:cover;"
-                                     alt="Our special memory">
+                                <img src="photo1.jpg" class="frame-image" alt="Our special memory">
+                                <div class="corner-decoration corner-tl">🌹</div>
+                                <div class="corner-decoration corner-br">🌹</div>
                             </div>
                         </div>
                     </div>
@@ -844,11 +988,11 @@
                     <div class="card-content">
                         <div>
                             <p>Love, for me, used to be just a word until you gave it meaning. With you, love is comfort, patience, laughter, and peace.It's in the little things — your voice, your kindness, your presence. You are love, in its purest form.</p>
-                            <div class="media-placeholder">
+                            <div class="photo-frame frame-2">
                                 <!-- REPLACE THIS URL WITH YOUR PHOTO -->
-                                <img src="photo2.jpg" 
-                                     style="width:100%; height:100%; object-fit:cover;"
-                                     alt="Love moment">
+                                <img src="photo2.jpg" class="frame-image" alt="Love moment">
+                                <div class="corner-decoration corner-tr">💙</div>
+                                <div class="corner-decoration corner-bl">💙</div>
                             </div>
                         </div>
                     </div>
@@ -868,11 +1012,11 @@
                     <div class="card-content">
                         <div>
                             <p>You are the calm to my chaos, the peace I never knew I needed. You've held my heart so gently, even when I didn't feel like I deserved it. Through every high and low, you've stayed and that means more than I can ever say.</p>
-                            <div class="media-placeholder">
+                            <div class="photo-frame frame-3">
                                 <!-- REPLACE THIS URL WITH YOUR PHOTO -->
-                                <img src="photo3.jpg" 
-                                     style="width:100%; height:100%; object-fit:cover;"
-                                     alt="Together">
+                                <img src="photo3.jpg" class="frame-image" alt="Together">
+                                <div class="corner-decoration corner-tl">💜</div>
+                                <div class="corner-decoration corner-br">💜</div>
                             </div>
                         </div>
                     </div>
@@ -892,19 +1036,19 @@
                     <div class="card-content">
                         <div>
                             <p>So much has happened in the time we've been together over a year of learning, growing, and becoming better for each other. Every moment with you has shaped me, softened me, and made me want to be the best version of myself. There's no one else I'd rather grow with.</p>
-                            <div class="media-placeholder">
+                            <div class="photo-frame frame-4">
                                 <!-- REPLACE THIS URL WITH YOUR PHOTO -->
-                                <img src="photo4.jpg" 
-                                     style="width:100%; height:100%; object-fit:cover;"
-                                     alt="Growing together">
+                                <img src="photo4.jpg" class="frame-image" alt="Growing together">
+                                <div class="corner-decoration corner-tr">🌻</div>
+                                <div class="corner-decoration corner-bl">🌻</div>
                             </div>
                         </div>
                     </div>
                     <div class="progress-dots">
                         <div class="dot" onclick="showCard(0)"></div>
                         <div class="dot" onclick="showCard(1)"></div>
-                        <div class="dot" onclick="showCard(2)"></div>
-                        <div class="dot active" onclick="showCard(3)"></div>
+                        <div class="dot active" onclick="showCard(2)"></div>
+                        <div class="dot" onclick="showCard(3)"></div>
                         <div class="dot" onclick="showCard(4)"></div>
                     </div>
                 </div>
@@ -918,11 +1062,11 @@
                             <p>Much of who I am now is because of you.
 Your love has been a light in my darkest moments, your laugh a reminder of joy, and your heart a safe home.
 On your birthday, I just want you to know how deeply loved you are — by me, always.</p>
-                            <div class="media-placeholder">
+                            <div class="photo-frame frame-5">
                                 <!-- REPLACE THIS URL WITH YOUR PHOTO -->
-                                <img src="photo5.jpg" 
-                                     style="width:100%; height:100%; object-fit:cover;"
-                                     alt="Forever">
+                                <img src="photo5.jpg" class="frame-image" alt="Forever">
+                                <div class="corner-decoration corner-tl">❤️</div>
+                                <div class="corner-decoration corner-br">❤️</div>
                             </div>
                         </div>
                     </div>
@@ -930,8 +1074,8 @@ On your birthday, I just want you to know how deeply loved you are — by me, al
                         <div class="dot" onclick="showCard(0)"></div>
                         <div class="dot" onclick="showCard(1)"></div>
                         <div class="dot" onclick="showCard(2)"></div>
-                        <div class="dot" onclick="showCard(3)"></div>
-                        <div class="dot active" onclick="showCard(4)"></div>
+                        <div class="dot active" onclick="showCard(3)"></div>
+                        <div class="dot" onclick="showCard(4)"></div>
                     </div>
                 </div>
             </div>
@@ -1390,8 +1534,8 @@ On your birthday, I just want you to know how deeply loved you are — by me, al
         }
 
         console.log("🎉 Birthday Website Ready!");
-        console.log("Added: 5 cards with picture placeholders");
-        console.log("Added: Timer since September 26, 2024");
+        console.log("Added: Bigger picture frames with cute flower borders");
+        console.log("Each card has unique flower frame colors and decorations!");
         console.log("Note: Replace image URLs with your actual photos");
     </script>
 </body>
